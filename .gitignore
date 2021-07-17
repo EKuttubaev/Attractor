@@ -2,4 +2,4 @@ env/*
 venv/*
 .idea/*
 __pycahe__/*
-db.sqlite3
+db.sqlite3/*
