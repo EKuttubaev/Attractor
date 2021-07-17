@@ -1,0 +1,59 @@
+{% load static %}
+<div>
+    <div class="" align="center">
+        <figure class="image is-128x128">
+            <img src="{% static 'img/attractor logo.png' %}">
+
+        </figure>
+    </div>
+
+</div>
+<div class="tabs is-large">
+    <ul>
+
+        <li><a class="navbar-item" href="{% url 'index' %}">
+            Главная
+        </a></li>
+        {% if user.is_authenticated %}
+        <li><a class="navbar-item" href="{% url 'add-category' %}">
+            Добавление категории
+        </a></li>
+        <li><a class="navbar-item" href="{% url 'add-article' %}">
+            Добавление статьи
+        </a></li>
+        <li><a class="navbar-item" href="{% url 'list' %}">
+            Список
+        </a></li>
+        {% endif %}
+
+    </ul>
+    {% if user.is_authenticated %}
+    <div class="navbar-end">
+        <div class="navbar-item">
+            <div class="buttons">
+                <a class="button is-primary" href="{% url 'profile' %}">
+                    <strong> {{ user.username }}</strong>
+                </a>
+
+                <a class="button is-light" href="{% url 'logout' %}">
+                    Выход
+                </a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="navbar-end">
+        <div class="navbar-item">
+            <div class="buttons">
+                <a class="button is-primary" href="{% url 'login' %}">
+                    <strong>Вход</strong>
+                </a>
+                <a class="button is-light" href="{% url 'register' %}">
+                    Регистрация
+                </a>
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>

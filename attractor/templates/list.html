@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+
+<div class="container">
+    <h1>Список категорий:</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Наименование категории</th>
+                <th>Её id</th>
+
+            </tr>
+        </thead>
+        {% for category in categories %}
+        <tbody>
+            <tr>
+                <th>{{ category.title }}</th>
+                <th>{{ category.parent_id }}</th>
+                 <th><a href="{% url 'edit-category' category.id %}">Редактировать</a> </th>
+                <th> <a href="{% url 'delete-category' category.id %}">Удалить</a></th>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+<div class="container">
+    <h1>Список статей:</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Наименование Статьи</th>
+                <th>Описание</th>
+                <th>Иконка</th>
+
+            </tr>
+        </thead>
+        {% for article in articles %}
+        <tbody>
+            <tr>
+                <th>{{ article.title }}</th>
+                <th>{{ article.description }}</th>
+                <th>{% if article.image %}
+                    <img src="{{ article.image.url }}">
+                    {% endif %}
+                </th>
+                 <th><a href="{% url 'edit-article' article.id %}">Редактировать</a> </th>
+                <th> <a href="{% url 'delete-article' article.id %}">Удалить</a></th>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+
+
+{% endblock%}
+
+
+</body>
+</html>

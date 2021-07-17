@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1></h1>
+    {{ user.username }}
+    <a href="{% url 'update-password' %}"> Изменить пароль</a>
+    <a href="{% url 'delete-profile' %}"> Удалить пользователя</a>
+{% endblock %}
